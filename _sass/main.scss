@@ -1,0 +1,239 @@
+@import "normalize";
+@import "vars";
+@import "default_colors";
+@import "syntax_highlighting";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
+
+/* Main CSS file
+   ========================================================================== */
+
+/* Responsive layout mixins */
+
+@mixin large {
+  @media screen and (min-width: #{$on-large}) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media screen and (min-width: #{$on-medium}) and (max-width: #{$on-large}) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media screen and (max-width: #{$on-medium}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: #{$on-small}), (orientation: portrait) {
+    @content;
+  }
+}
+
+/* General Stuff */
+
+body {
+  // will be full height
+  height: 100vh;
+
+  // sidebar + content flexbox
+  display: flex;
+
+  // keep fixed
+  overflow: hidden;
+
+  // on mobile stack vertically
+  @include mobile {
+    flex-direction: column;
+    overflow: auto;
+  }
+
+  // other attributes
+  background: $body-background;
+  color: $body-foreground;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+section {
+  display: block;
+  margin: 0 0 20px 0;
+}
+
+/* Headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 20px;
+  font-weight: normal;
+  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+  color: $header-color;
+  letter-spacing: -0.03em;
+}
+
+/* Lists */
+
+dt {
+  font-style: italic;
+  font-weight: bold;
+}
+
+li {
+  line-height: $contracted-line-height;
+}
+
+ul li {
+  list-style-type: circle;
+}
+
+blockquote {
+  color: $blockquote-color;
+  padding-left: 10px;
+  border-left: 1px dotted $blockquote-border;
+}
+
+/* Code Highlighting */
+
+pre.highlight {
+  @include relative-font-size(0.8);
+  @include small {
+    @include relative-font-size(0.7);
+  }
+  background: $code-bg-color;
+  color: $code-text-color;
+  border: 1px solid $accent-dull;
+  border-radius: 2px;
+  padding: 10px;
+  word-wrap: anywhere;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+pre > code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+// Inline code styling
+code.highlighter-rouge {
+  background: $code-bg-color;
+  color: $code-text-color;
+  border: 1px solid $gallery;
+  border-radius: 2px;
+  padding: 0px 3px;
+  margin: 0px -3px;
+}
+
+/* Tables */
+
+table {
+  width: 100%;
+  margin: 0 0 20px 0;
+}
+
+th {
+  text-align: left;
+  border-bottom: 1px dashed $dove-grey;
+  padding: 5px 10px;
+}
+
+td {
+  padding: 5px 10px;
+}
+
+hr {
+  height: 0;
+  border: 0;
+  border-bottom: 1px dashed $dove-grey;
+  color: $dove-grey;
+}
+
+/* Buttons */
+
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  border: none;
+  border-radius: 0;
+  text-decoration: none;
+  transition: background-color 0.25s;
+  white-space: inherit;
+  background: $btn-background;
+  color: $btn-text;
+  font-weight: 700;
+
+  &:hover {
+    background-color: $btn-hover;
+  }
+
+  @include large {
+    padding: 0.75rem 2rem;
+  }
+
+  @include medium {
+    padding: 0.65rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  @include small {
+    display: block;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+
+    + .btn {
+      margin-top: 1rem;
+      margin-left: 0;
+    }
+  }
+}
+
+/* Links */
+
+a {
+  color: $accent-light;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Icons */
+
+.white {
+  color: $accent-bright;
+}
+
+.svg-icon {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  stroke: currentColor;
+  stroke-width: 0;
+  fill: currentColor;
+  padding-right: 10px;
+}
+
+.social-media-list {
+  li + li {
+    padding-top: 5px;
+  }
+}
+
+/* Specific layout
+   ========================================================================== */
+
+@import "layout";

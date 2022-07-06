@@ -1,0 +1,28 @@
+<header class="header" role="banner">
+    <div id="particles-js"></div>
+    <div class="header-container">
+        <a href="{{ '/' | relative_url}}" title="Home">
+            <img class="profile-picture" src="/assets/images/me.jpg" alt="my photo" />
+            <hr>
+            <h1 id="site-title" href="{{ site.url }}">{{ site.title }}</h1>
+        </a>
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+            <svg class="svg-icon white">
+                <use href="{{ '/assets/icons.svg#hamburger' | relative_url }}"></use>
+            </svg>
+        </label>
+        <nav class="navbar">
+            {% for x in site.navigation %}
+            {% if x.item == "Resume" %}
+            <a class="btn navbar-btn" , target="_blank" href="{{ x.link }}">{{ x.item }}</a>
+            {% else %}
+            <a class="btn navbar-btn" , href="{{ x.link }}">{{ x.item }}</a>
+            {% endif %}
+            {% endfor %}
+            <div class="nav-social">
+                {%- include social.html -%}
+            </div>
+        </nav>
+    </div>
+</header>

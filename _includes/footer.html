@@ -1,0 +1,28 @@
+<footer class="footer">
+
+    <div class="footer-col-wrapper">
+
+        <div class="footer-col footer-col-1">
+            <ul class="contact-list">
+                <li class="p-name">
+                    {%- if site.author -%}
+                    &copy;{{ site.author | escape }}
+                    {%- else -%}
+                    {{ site.title | escape }}
+                    {%- endif -%}
+                </li>
+                {%- if site.email -%}
+                <li><a href="mailto:{{ site.email | encode_email }}"> Contact me</a></li>
+                {%- endif -%}
+            </ul>
+        </div>
+
+        <div class="footer-col footer-col-2">
+            <p>{{- site.description | escape -}}</p>
+        </div>
+
+    </div>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.42.2/tsparticles.min.js"></script> -->
+    <script src="//cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{{ '/assets/js/main.js' | prepend: site.baseurl }}"></script>
+</footer>

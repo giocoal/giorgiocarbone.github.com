@@ -1,0 +1,47 @@
+<ul class="social-media-list">
+    {%- if site.twitter_username -%}
+    <li class="social-media-item">
+        <a href="https://twitter.com/{{ site.twitter_username| cgi_escape | escape }}">
+            <svg class="svg-icon white">
+                <use href="{{ '/assets/icons.svg#twitter' | relative_url }}"/>
+            </svg>
+        </a>
+    </li>
+    {%- endif -%}
+    {%- if site.linkedin_username -%}
+    <li class="social-media-item">
+        <a href="https://www.linkedin.com/in/{{ site.linkedin_username| cgi_escape | escape }}">
+            <svg class="svg-icon white">
+                <use href="{{ '/assets/icons.svg#linkedin' | relative_url }}"/>
+            </svg>
+        </a>
+    </li>
+    {%- endif -%}
+    {%- if site.github_username -%}
+    <li class="social-media-item">
+        <a href="https://github.com/{{ site.github_username| cgi_escape | escape }}">
+            <svg class="svg-icon white">
+                <use href="{{ '/assets/icons.svg#github' | relative_url }}"/>
+            </svg>
+        </a>
+    </li>
+    {%- endif -%}
+    {%- if site.google_scholar -%}
+    <li class="social-media-item">
+        <a href="https://scholar.google.fr/citations?user={{ site.google_scholar | escape }}">
+            <svg class="svg-icon white">
+                <use href="{{ '/assets/icons.svg#gscholar' | relative_url }}"/>
+            </svg>
+        </a>
+    </li>
+    {%- endif -%}
+    {%- if site.orc_id -%}
+    <li class="social-media-item">
+        <a href="https://orcid.org/{{ site.orc_id | escape }}">
+            <svg class="svg-icon white">
+                <use href="{{ '/assets/icons.svg#orcid' | relative_url }}"/>
+            </svg>
+        </a>
+    </li>
+    {%- endif -%}
+</ul>

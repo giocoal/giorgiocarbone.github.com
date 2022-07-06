@@ -1,0 +1,330 @@
+/* Header */
+
+// The header is the left/top part of a flexbox
+.header {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  position: relative;
+
+  // An image which is covered by a gradient
+  background: linear-gradient(140deg, rgba(68, 68, 68, 0.3) 20%, rgba(0, 0, 0, 0.6)),
+    url(../images/background.jpg) top left no-repeat #212657;
+
+  // limit maximum size on large screens
+  @include large {
+    max-width: $header-width;
+  }
+  // padding on top on small screens
+  @include mobile {
+    padding-top: 5%;
+  }
+}
+// A container for the header which centers content
+// vertically and horizontally
+.header-container {
+  z-index: 999;
+  width: 90%;
+  margin: 0 auto;
+}
+.profile-picture {
+  width: $profile-image-size;
+  border: 3px solid $accent-bright;
+  border-radius: 5%;
+  @include small {
+    width: $profile-image-size - 50;
+    img {
+      margin-top: -5px;
+    }
+  }
+}
+#site-title {
+  line-height: $base-line-height;
+  display: inline-block;
+  font-weight: bold;
+  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+  color: $accent-bright;
+  letter-spacing: -1px;
+
+  @include large {
+    @include relative-font-size(3);
+  }
+  @include medium {
+    @include relative-font-size(2);
+  }
+  @include small {
+    @include relative-font-size(1.5);
+  }
+}
+.navbar {
+  padding: 5px 0 5px 0;
+
+  @include medium {
+    margin-top: 5px;
+  }
+  @include small {
+    padding: 10px 0 10px 0;
+    margin: 0;
+    display: block;
+    float: none;
+    text-align: center;
+    width: 100%;
+  }
+  @include mobile {
+    display: none;
+  }
+}
+.navbar-btn {
+  margin-top: 10px;
+  @include large {
+    @include relative-font-size(0.9);
+  }
+  @include medium {
+    @include relative-font-size(0.6);
+  }
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: auto;
+}
+
+/* Mobile menu button and trigger */
+
+.nav-trigger {
+  /* critical styles - hide the checkbox input */
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+label[for="nav-trigger"] {
+  /* critical positioning styles */
+  position: fixed;
+  right: 15px;
+  top: 20px;
+  z-index: 2;
+  display: none;
+  @include mobile {
+    display: inline;
+  }
+
+  /* non-critical apperance styles */
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+}
+.nav-trigger:checked ~ .navbar {
+  display: block;
+}
+
+/* Contact and social media */
+
+.contact-list,
+.social-media-list {
+  list-style-type: none;
+  margin-left: 0;
+}
+.social-media-item {
+  display: inline-block;
+}
+
+/* Footer */
+
+.footer {
+  border-top: 1px solid $transparent;
+  padding: $spacing-unit 10%;
+}
+
+.footer ul {
+  padding: 0;
+}
+
+.footer ul li {
+  list-style-type: none;
+}
+
+.footer-col-wrapper {
+  color: $background-dark;
+  margin-left: -$spacing-unit / 2;
+  display: flex;
+  flex-flow: row wrap;
+  max-width: $content-inner-width;
+  @include relative-font-size(0.85);
+}
+
+.footer-col {
+  @include small {
+    text-align: center;
+  }
+}
+
+.footer-col-1 {
+  flex: 1 0px;
+  @include small {
+    flex: 1 auto;
+  }
+}
+
+.footer-col-2 {
+  flex: 3 0px;
+  @include small {
+    flex: 1 auto;
+  }
+}
+
+/* Main Content */
+
+// Main page content
+.main-content {
+
+  // a third of the screen
+  flex: 3;
+  overflow: auto;
+
+  @include mobile {
+    flex: 1 auto;
+    overflow: visible;
+  }
+
+  // Stacked content/footer
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    @include relative-font-size(3);
+    @include mobile {
+      @include relative-font-size(2.3);
+    }
+    color: $accent-dark;
+  }
+  h2 {
+    @include relative-font-size(2.2);
+    @include mobile {
+      @include relative-font-size(1.6);
+    }
+    color: $accent-medium;
+  }
+  h3 {
+    @include relative-font-size(1.8);
+    @include mobile {
+      @include relative-font-size(1.5);
+    }
+  }
+  h4 {
+    @include relative-font-size(1);
+  }
+  h5 {
+    @include relative-font-size(0.9);
+    text-transform: uppercase;
+    margin: 0 0 5px 0;
+  }
+  h6 {
+    @include relative-font-size(0.9);
+    text-transform: uppercase;
+    color: $text-dark;
+    margin: 0 0 5px 0;
+  }
+  img {
+    max-width: 100%;
+  }
+}
+
+// A container for the page content
+.outer-container {
+  margin: 0 10%;
+  padding: 50px 0;
+  max-width: $content-inner-width;
+  display: flex;
+  align-items: center;
+
+  // top
+  flex: 1 auto;
+
+  @include medium {
+    max-width: 83%;
+  }
+}
+
+.inner-container {
+  flex: 1 auto;
+}
+
+/* List pages (post) */
+
+.content-list ul {
+  padding: 0;
+}
+
+.content-list ul li {
+  list-style-type: none;
+}
+
+.post-list-heading {
+  @include relative-font-size(1.1);
+}
+
+.post-list {
+  margin-left: 0;
+  list-style: none;
+
+  > li {
+    margin-bottom: $spacing-unit;
+  }
+}
+
+.post-meta {
+  font-size: $small-font-size;
+  color: $text-dark;
+}
+
+.post-link {
+  display: block;
+  @include relative-font-size(1.2);
+}
+
+/* Posts */
+
+.post-header {
+  margin-bottom: $spacing-unit;
+}
+
+.post-title,
+.post-content h1 {
+  @include relative-font-size(2.625);
+  letter-spacing: -1px;
+  line-height: 1;
+
+  @include large {
+    @include relative-font-size(2.625);
+  }
+}
+
+.post-content {
+  margin-bottom: $spacing-unit;
+
+  h2 {
+    @include relative-font-size(1.75);
+
+    @include large {
+      @include relative-font-size(2);
+    }
+  }
+
+  h3 {
+    @include relative-font-size(1.375);
+
+    @include large {
+      @include relative-font-size(1.625);
+    }
+  }
+
+  h4 {
+    @include relative-font-size(1.125);
+
+    @include large {
+      @include relative-font-size(1.25);
+    }
+  }
+}
